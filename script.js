@@ -114,7 +114,6 @@ function getEndTimeText(data) {
 function createBookingText(data) {
   return `CSINÁLD MAGAD MŰHELY - FOGLALÁS\n\nNév: ${data.name}\nE-mail: ${data.email}\nTelefonszám: ${data.phone}\nJármű: ${data.vehicle}\nSzolgáltatás: ${data.service}\nDátum: ${data.date}\nKezdés: ${data.time}\nBefejezés: ${getEndTimeText(data)}\nIdőtartam: ${data.duration_hours} óra\nDiagnosztika: ${data.diagnostics ? 'Igen' : 'Nem'}\nSpeciális szerszámcsomag: ${data.special_tools ? 'Igen' : 'Nem'}\nMegjegyzés: ${data.note || '-'}\n\nVárható összeg: ${new Intl.NumberFormat('hu-HU').format(data.total_price)} Ft\n`;
 }
-
 function downloadTxt(data) {
   const blob = new Blob([createBookingText(data)], { type: 'text/plain;charset=utf-8' });
   const url = URL.createObjectURL(blob);
